@@ -4,8 +4,8 @@
 using namespace std;
 
 int main() {
-	ListTest();
-
+	//ListTest();
+	mapTest();
 	cout << "HelloWorld!"<< endl;
 	system("pause");
 	return 0;

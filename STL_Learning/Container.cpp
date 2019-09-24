@@ -1,5 +1,7 @@
 #include <list>
+#include <map>
 #include <iostream>
+#include <string>
 #include "Container.h"
 
 using namespace std;
@@ -31,4 +33,23 @@ void ListTest() {
 	cout << endl;
 	cout <<"L1.front()-->" <<L1.front()<< endl;
 	cout <<"L1.back()-->"<<L1.back() << endl;
+}
+
+void mapTest(){
+	map<int,string> map_Int_Str;
+	//add data to map_Int_Str
+	pair<int,string> value(1,"first");
+	map_Int_Str.insert(value);
+	map_Int_Str[3]="Third";
+	map_Int_Str.insert(map<int,string>::value_type(2,"Second"));
+	
+	map<int,string>::iterator intStr_itera=map_Int_Str.begin();
+	for(;intStr_itera!=map_Int_Str.end();intStr_itera++){
+		cout<<intStr_itera->first<<"  :  "<<intStr_itera->second<<endl;
+	}
+
+	string tmpStr=map_Int_Str[2];
+	cout<<tmpStr<<endl;
+
+
 }
