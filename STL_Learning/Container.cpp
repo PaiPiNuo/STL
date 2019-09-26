@@ -1,5 +1,6 @@
 #include <list>
 #include <map>
+#include <set>
 #include <iostream>
 #include <string>
 #include "Container.h"
@@ -50,6 +51,39 @@ void mapTest(){
 
 	string tmpStr=map_Int_Str[2];
 	cout<<tmpStr<<endl;
+	
+	//find function
+	map<int, string>::iterator intStr_Itera2 = map_Int_Str.find(3);
+	if (intStr_Itera2!= map_Int_Str.end()) {
+		cout << "Found it   " << intStr_Itera2->second << endl;
+	}
+	map<int, string>::iterator intStr_Itera3 = map_Int_Str.find(4);
+	if (intStr_Itera3== map_Int_Str.end()) {
+		cout << "Sorry,Not Found it!"<< endl;
+	}
+	
+	pair<string, int> data1("bcf",2);
+	pair<string, int> data2("abf", 1);
+	pair<string, int> data3("cdf", 3);
+	map<string, int> mapStrInt;
+	mapStrInt.insert(data1);
+	mapStrInt.insert(data2);
+	mapStrInt.insert(data3);
+	map<string, int>::iterator ite = mapStrInt.begin();
+	for (; ite != mapStrInt.end();ite++) {
+		cout << ite->first << "  " << ite->second << endl;
+	}
+}
 
-
+void setTest() {
+	set<string> S;
+	S.insert("bad");
+	S.insert("acf");
+	S.insert("csd");
+	set<string>::iterator ite = S.begin();
+	for (; ite != S.end();ite++) {
+		cout << *ite<< "  ";
+	}
+	
+	
 }
