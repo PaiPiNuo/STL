@@ -1,8 +1,10 @@
 #include <list>
 #include <map>
 #include <set>
+#include <iterator>
 #include <iostream>
 #include <string>
+#include <cctype>
 #include "Container.h"
 
 using namespace std;
@@ -75,6 +77,83 @@ void mapTest(){
 	}
 }
 
+void mapTest2() {
+	map<string, int> courses;
+	courses.insert(make_pair("CSAPP",3));
+	courses.insert(make_pair("C++",2));
+	courses.insert(make_pair("CSARCH",4));
+	courses.insert(make_pair("COMPILER",4));
+	courses.insert(make_pair("OS",5));
+	map<string, int>::iterator iteraTemp = courses.begin();
+	for (; iteraTemp!=courses.end();iteraTemp++) {
+		cout << iteraTemp->first<<"   "<<iteraTemp->second << endl;
+	}
+
+	int n = 3;
+	int sum = 0;
+	while (n>0) {
+		string name;
+		cin >> name;
+		map<string,int>::iterator itera=courses.find(name);
+		if (itera==courses.end()) {
+			cout << name<<" is not available"<< endl;
+		}
+		else {
+			sum += itera->second;
+			courses.erase(itera);
+			n--;
+		}
+	}
+	cout << "Total credit:"<<sum<< endl;
+}
+/*
+Count the number of occurrences of each letter in a sentence
+*/
+void Map_charNum() {
+	map<char, int> s;
+	char c;
+	do {
+		cin >> c;
+		if (isalpha(c)) {
+			c = tolower(c);
+			s[c]++;
+		}
+	} while (c!='.');
+
+	for (map<char, int>::iterator itera = s.begin(); itera != s.end();itera++) {
+		cout <<itera->first<<"  "<<itera->second << endl;
+	}
+}
+
+void multimapTest() {
+	multimap<string, string> courses;
+	typedef multimap<string, string>::iterator CourseIteraT;
+	CourseIteraT CourseItera;
+	courses.insert(make_pair("C++","2-6"));
+	courses.insert(make_pair("OS","1-2"));
+	courses.insert(make_pair("COMPILER","3-1"));
+	courses.insert(make_pair("OS","5-5"));
+	courses.insert(make_pair("COMPILER","5-2"));
+	courses.insert(make_pair("OS","5-1"));
+	for (CourseItera = courses.begin(); CourseItera != courses.end(); CourseItera++) {
+		cout << CourseItera->first << "  " << CourseItera->second << endl;
+	}
+
+	string name;
+	int count=0;
+	do {
+		cin >> name;
+		count = courses.count(name);
+		if (0 == count)
+			cout << "Cannot find this course!"<< endl;
+	} while (count==0);
+	cout << count<<" lessons per week"<< endl;
+	pair<CourseIteraT, CourseIteraT> range = courses.equal_range(name);
+	for (CourseIteraT itera = range.first; itera != range.second; itera++) {
+		cout << itera->first <<" " << itera->second<< endl;
+	}
+}
+
 void setTest() {
 	set<string> S;
 	S.insert("bad");
@@ -84,6 +163,28 @@ void setTest() {
 	for (; ite != S.end();ite++) {
 		cout << *ite<< "  ";
 	}
-	
+}
+
+void setTest2() {
+	set<double> s;
+	double v;
+	while (true) {
+		cin >> v;
+		if (0 == v)
+			break;
+		pair<set<double>::iterator, bool> iter = s.insert(v);
+		if (!iter.second)
+			cout << v << "is duplicated" << endl;
+	}
+
+	set<double>::iterator itera1 = s.begin();
+	set<double>::iterator itera2 = s.end();
+	double medium = (*itera1 + *(--itera2)) / 2;
+	cout << "<=medium: ";
+	copy(itera1,s.upper_bound(medium),ostream_iterator<double>(cout," "));
+	cout << endl;
+	cout << ">=medium: ";
+	copy(s.lower_bound(medium),s.end(),ostream_iterator<double>(cout," "));
+	cout << endl;	
 	
 }
