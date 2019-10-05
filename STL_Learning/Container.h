@@ -9,6 +9,8 @@
 //	template<class U,class V>pair2(const pair<U,V>&p);
 //};
 void ListTest();
+void list_Splice();
+void dequeTest();
 void mapTest();
 void mapTest2();
 void Map_charNum();

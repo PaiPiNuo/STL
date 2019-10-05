@@ -5,13 +5,15 @@ using namespace std;
 
 int main() {
 	//ListTest();
+	//list_Splice();
+	dequeTest();
 	//mapTest();
 	//setTest();
 	//setTest2();
 	//mapTest2();
 	//Map_charNum();
 	//multimapTest();
-	mySortTest();
+	//mySortTest();
 	
 	cout << "HelloWorld!"<< endl;
 	system("pause");

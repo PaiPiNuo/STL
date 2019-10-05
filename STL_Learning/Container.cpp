@@ -1,10 +1,13 @@
 #include <list>
 #include <map>
 #include <set>
+#include <deque>
+#include <vector>
 #include <iterator>
 #include <iostream>
 #include <string>
 #include <cctype>
+#include <algorithm>
 #include "Container.h"
 
 using namespace std;
@@ -36,6 +39,44 @@ void ListTest() {
 	cout << endl;
 	cout <<"L1.front()-->" <<L1.front()<< endl;
 	cout <<"L1.back()-->"<<L1.back() << endl;
+}
+
+void list_Splice() {
+	string name1[] = {"Alice","Hellen","Lucy","Susan"};
+	string name2[] = {"Bob","David","Levin","Mike"};
+	list<string> s1(name1, name1+ 4);
+	list<string> s2(name2, name2+4);
+
+	s2.splice(s2.end(),s1,s1.begin());
+	list<string>::iterator itera1 = s1.begin();
+	advance(itera1,2);
+	list<string>::iterator itera2 = s2.begin();
+	++itera2;
+	list<string>::iterator itera3 = itera2;
+	advance(itera3,2);
+	s1.splice(itera1,s2,itera2,itera3);
+
+	copy(s1.begin(),s1.end(),ostream_iterator<string>(cout," "));
+	cout << endl;
+	copy(s2.begin(),s2.end(),ostream_iterator<string>(cout," "));
+	cout << endl;
+	
+}
+
+void dequeTest() {
+	istream_iterator<int> in(cin), inEnd;
+	vector<int> vect(in,inEnd);
+	sort(vect.begin(),vect.end());
+	deque<int> deq;
+	for (vector<int>::iterator itera = vect.begin(); itera != vect.end();itera++) {
+		if (0 == *itera % 2)
+			deq.push_back(*itera);
+		else
+			deq.push_front(*itera);
+	}
+
+	copy(deq.begin(),deq.end(),ostream_iterator<int>(cout," "));
+	cout << endl;
 }
 
 void mapTest(){
