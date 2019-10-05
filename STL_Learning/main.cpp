@@ -6,7 +6,7 @@ using namespace std;
 int main() {
 	//ListTest();
 	//list_Splice();
-	dequeTest();
+	//dequeTest();
 	//mapTest();
 	//setTest();
 	//setTest2();
@@ -14,6 +14,7 @@ int main() {
 	//Map_charNum();
 	//multimapTest();
 	//mySortTest();
+	istream_Iterator();
 	
 	cout << "HelloWorld!"<< endl;
 	system("pause");
