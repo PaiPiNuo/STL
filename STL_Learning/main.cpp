@@ -10,7 +10,9 @@ int main() {
 	//setTest2();
 	//mapTest2();
 	//Map_charNum();
-	multimapTest();
+	//multimapTest();
+	mySortTest();
+	
 	cout << "HelloWorld!"<< endl;
 	system("pause");
 	return 0;
